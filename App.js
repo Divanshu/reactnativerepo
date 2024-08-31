@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import DashboardScreen from './screens/DashboardScreen';
+import AddHabitScreen from './screens/AddHabitScreen';
+import HabitDetailScreen from './screens/HabitDetailScreen';
+import ProgressScreen from './screens/ProgressScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Dashboard">
+        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="AddHabit" component={AddHabitScreen} />
+        <Stack.Screen name="HabitDetail" component={HabitDetailScreen} />
+        <Stack.Screen name="Progress" component={ProgressScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
